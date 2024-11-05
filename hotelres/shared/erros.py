@@ -1,0 +1,11 @@
+class DataBaseErrors:
+  class DataBaseExeption(Exception):
+    pass
+  class FormatingError(DataBaseExeption):
+    pass
+  class ExecuteQuery(DataBaseExeption):
+    pass
+  class SelectOneError(DataBaseExeption):
+    pass
+  class SelectAll(DataBaseExeption):
+    pass
