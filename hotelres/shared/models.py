@@ -7,6 +7,8 @@ class Data_base_handeler:
     try:
       collums = [col[0] for col in collums]
       formatInformation = [dict(zip(collums,row)) for row in rows]
+    except TypeError as typeError:
+      raise erros.DataBaseErrors.FormatingError(f'Error from --> format_information u need to pass correct id  {typeError}')
     except Exception as e:
       raise erros.DataBaseErrors.FormatingError(f'Error From --> format_information in data_base_handeler {e}')
     return formatInformation
