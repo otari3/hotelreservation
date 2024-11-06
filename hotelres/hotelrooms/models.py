@@ -36,7 +36,19 @@ class HotelRooms(models.Model):
               params = (room['type'],room['price'],room['room_number'],room['id'],room['hotel_id'])
               cursor.execute(query,params)
       except Exception as e:
-        raise erros.DataBaseErrors.UpdatingRoomsError(f'There Seems to Be Some Kind of Error --> From updating_rooms {e}')
-  
+        raise erros.DataBaseErrors.UpdatingRoomsError(f'There Seems to Be Some Kind of Error -->  /hotelrooms/models/updating_rooms {e}')
+  @staticmethod
+  def get_all_rooms(id):
+    query = """SELECT r.id,r.type,r.price,r.room_number,h.name AS hotel_name 
+               FROM hotelrooms_hotelrooms as r
+               INNER JOIN hotels_hotels as h ON r.hotel_id = h.id
+               WHERE r.hotel_id = %s
+               ORDER BY r.price ASC;"""
+    try:
+      return base_model.Data_base_handeler.select_all(query,(id,))
+    except erros.DataBaseErrors.FormatingError:
+      raise
+    except erros.DataBaseErrors.SelectAll:
+      raise
         
     

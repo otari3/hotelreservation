@@ -12,10 +12,8 @@ def adding_rooms(request):
       data = json.loads(request.body)
       HotelRooms.adding_rooms(data['rooms'])
       return JsonResponse({'sucsefuly':'Rooms Has Been Added'},status=200)
-    except erros.DataBaseErrors.AddinRoomsError as roomError:
-      return JsonResponse({'error': str(roomError)},status=400)
     except Exception as e:
-      return JsonResponse({'error':f'there seems to be error {str(e)}'},status=400)
+      return erros.handel_errors(e,'/hotelrooms/views/adding_rooms')
   else:
     return JsonResponse({'error':f'method should be Post'},status=405)
 @csrf_exempt
@@ -25,10 +23,19 @@ def updating_rooms(request):
       data = json.loads(request.body)
       HotelRooms.update_rooms(data['rooms'])
       return JsonResponse({'sucsefuly':'Rooms Has Been Updated'},status =204)
-    except erros.DataBaseErrors.UpdatingRoomsError as updateError:
-      return JsonResponse({'error':str(updateError)})
     except Exception as e:
-      return JsonResponse({'error':f'there seems to be error --> views/update_rooms {str(e)} '},status=400)
+      return erros.handel_errors(e,'hotelrooms/views/updating_rooms')
   else:
     return JsonResponse({'error':f'method should be PUT'},status=405)
+
+def select_all_rooms(request,id):
+  if request.method == "GET":
+    try:
+      return JsonResponse({'rooms':HotelRooms.get_all_rooms(int(id))},status=200)
+    except Exception as e:
+      return erros.handel_errors(e,'hotelrooms/views/select_all_rooms')
+  else:
+    return JsonResponse({'error':f'method should be GET'},status=405)
+    
+    
   
