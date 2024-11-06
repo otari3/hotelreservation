@@ -9,3 +9,5 @@ class DataBaseErrors:
     pass
   class SelectAll(DataBaseExeption):
     pass
+  class AddinRoomsError(DataBaseExeption):
+    pass

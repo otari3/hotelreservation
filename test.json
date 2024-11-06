@@ -1,0 +1,17 @@
+{
+  "rooms": [
+    { "type": "premium", "price": 160, "room_number": 107, "hotel_id": 1 },
+    { "type": "luxury", "price": 300, "room_number": 108, "hotel_id": 1 },
+    { "type": "sweet", "price": 250, "room_number": 109, "hotel_id": 1 },
+    { "type": "exlusev", "price": 110, "room_number": 110, "hotel_id": 1 },
+    {
+      "type": "two bed rooms",
+      "price": 120,
+      "room_number": 111,
+      "hotel_id": 1
+    },
+    { "type": "exlusev", "price": 140, "room_number": 112, "hotel_id": 1 },
+    { "type": "premium", "price": 300, "room_number": 113, "hotel_id": 1 },
+    { "type": "exlusev", "price": 180, "room_number": 114, "hotel_id": 1 }
+  ]
+}
