@@ -15,3 +15,9 @@
     { "type": "exlusev", "price": 180, "room_number": 114, "hotel_id": 1 }
   ]
 }
+
+{ 
+  "rooms": [
+    { "type": "premium changed id 3", "price": 800, "room_number": 107, "hotel_id": 1 ,"id":3},
+    { "type": "we changed id 10", "price": 900, "room_number": 108, "hotel_id": 1,"id":10 },
+}

@@ -17,4 +17,18 @@ def adding_rooms(request):
     except Exception as e:
       return JsonResponse({'error':f'there seems to be error {str(e)}'},status=400)
   else:
-    return JsonResponse({'error':f'method should be post'},status=405)
+    return JsonResponse({'error':f'method should be Post'},status=405)
+@csrf_exempt
+def updating_rooms(request):
+  if request.method == "PUT":
+    try:
+      data = json.loads(request.body)
+      HotelRooms.update_rooms(data['rooms'])
+      return JsonResponse({'sucsefuly':'Rooms Has Been Updated'},status =204)
+    except erros.DataBaseErrors.UpdatingRoomsError as updateError:
+      return JsonResponse({'error':str(updateError)})
+    except Exception as e:
+      return JsonResponse({'error':f'there seems to be error --> views/update_rooms {str(e)} '},status=400)
+  else:
+    return JsonResponse({'error':f'method should be PUT'},status=405)
+  

@@ -11,3 +11,5 @@ class DataBaseErrors:
     pass
   class AddinRoomsError(DataBaseExeption):
     pass
+  class UpdatingRoomsError(DataBaseExeption):
+    pass
