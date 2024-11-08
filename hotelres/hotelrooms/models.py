@@ -39,9 +39,8 @@ class HotelRooms(models.Model):
         raise erros.DataBaseErrors.UpdatingRoomsError(f'There Seems to Be Some Kind of Error -->  /hotelrooms/models/updating_rooms {e}')
   @staticmethod
   def get_all_rooms(id):
-    query = """SELECT r.id,r.type,r.price,r.room_number,h.name AS hotel_name 
+    query = """SELECT r.id,r.type,r.price,r.room_number
                FROM hotelrooms_hotelrooms as r
-               INNER JOIN hotels_hotels as h ON r.hotel_id = h.id
                WHERE r.hotel_id = %s
                ORDER BY r.price ASC;"""
     try:
