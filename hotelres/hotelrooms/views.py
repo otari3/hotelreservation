@@ -15,7 +15,7 @@ def adding_rooms(request):
     except Exception as e:
       return erros.handel_errors(e,'/hotelrooms/views/adding_rooms')
   else:
-    return JsonResponse({'error':f'method should be Post'},status=405)
+    return JsonResponse({'error':f'method should be POST'},status=405)
 @csrf_exempt
 def updating_rooms(request):
   if request.method == "PUT":
