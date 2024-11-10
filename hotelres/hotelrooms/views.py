@@ -10,7 +10,7 @@ def adding_rooms(request):
   if request.method == 'POST':
     try:
       data = json.loads(request.body)
-      HotelRooms.adding_rooms(data['rooms'])
+      HotelRooms.adding_rooms(data)
       return JsonResponse({'sucsefuly':'Rooms Has Been Added'},status=200)
     except Exception as e:
       return erros.handel_errors(e,'/hotelrooms/views/adding_rooms')
@@ -21,7 +21,7 @@ def updating_rooms(request):
   if request.method == "PUT":
     try:
       data = json.loads(request.body)
-      HotelRooms.update_rooms(data['rooms'])
+      HotelRooms.update_rooms(data)
       return JsonResponse({'sucsefuly':'Rooms Has Been Updated'},status =204)
     except Exception as e:
       return erros.handel_errors(e,'hotelrooms/views/updating_rooms')

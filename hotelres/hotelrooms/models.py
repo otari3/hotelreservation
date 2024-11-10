@@ -18,8 +18,8 @@ class HotelRooms(models.Model):
     try:
       with transaction.atomic():
         with connection.cursor() as cursor:
-          for room in rooms:
-            params = (room['type'],room['price'],room['room_number'],room['hotel_id'])
+          for room in rooms['rooms']:
+            params = (room['type'],room['price'],room['room_number'],rooms['hotel_id'])
             cursor.execute(query,params)
     except Exception as e:
       raise erros.DataBaseErrors.AddinRoomsError(f'There Seems to Be Some Kind of Error --> From adding_rooms {e}')
@@ -32,8 +32,8 @@ class HotelRooms(models.Model):
       try:
         with transaction.atomic():
           with connection.cursor() as cursor:
-            for room in rooms:
-              params = (room['type'],room['price'],room['room_number'],room['id'],room['hotel_id'])
+            for room in rooms['rooms']:
+              params = (room['type'],room['price'],room['room_number'],room['id'],rooms['hotel_id'])
               cursor.execute(query,params)
       except Exception as e:
         raise erros.DataBaseErrors.UpdatingRoomsError(f'There Seems to Be Some Kind of Error -->  /hotelrooms/models/updating_rooms {e}')
