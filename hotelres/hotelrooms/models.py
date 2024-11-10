@@ -49,5 +49,13 @@ class HotelRooms(models.Model):
       raise
     except erros.DataBaseErrors.SelectAll:
       raise
+  @staticmethod
+  def delete_room(id,hotelid):
+    query = """DELETE FROM hotelrooms_hotelrooms   
+              WHERE id = %s AND hotel_id = %s"""
+    try:
+      base_model.Data_base_handeler.execute_query(query,(int(id),hotelid))
+    except erros.DataBaseErrors.ExecuteQuery:
+      raise
         
     

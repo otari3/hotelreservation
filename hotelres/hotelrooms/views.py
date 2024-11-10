@@ -36,6 +36,16 @@ def select_all_rooms(request,id):
       return erros.handel_errors(e,'hotelrooms/views/select_all_rooms')
   else:
     return JsonResponse({'error':f'method should be GET'},status=405)
+@csrf_exempt
+def delete_room(request,id,hotelid):
+  if request.method == 'DELETE':
+    try:
+      HotelRooms.delete_room(id,hotelid)
+      return JsonResponse({'sucsefuly':'Rooms Has Been Deleted'},status = 204)
+    except Exception as e:
+      return erros.handel_errors(e,'hotelrooms/views/delete_room')
+  else:
+    return JsonResponse({'error':f'method should be DELETE'},status=405)
     
     
   
